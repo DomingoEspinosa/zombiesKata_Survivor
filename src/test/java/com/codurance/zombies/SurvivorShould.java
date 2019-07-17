@@ -41,4 +41,10 @@ public class SurvivorShould {
         survivor.increaseWounds(2);
         assertThat(survivor.isAlive(), is(false));
     }
+
+    @Test
+    public void have_three_actions_per_turn() {
+        int actions = survivor.getNumberOfActionsAvailable();
+        assertThat(actions, is(3));
+    }
 }

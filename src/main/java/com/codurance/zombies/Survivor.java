@@ -2,11 +2,13 @@ package com.codurance.zombies;
 
 public class Survivor {
 
+    private int numberOfActions;
     private int wounds;
     private String name;
 
     public Survivor() {
         wounds = 0;
+        numberOfActions = 3;
     }
 
     public String getName() {
@@ -30,5 +32,9 @@ public class Survivor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getNumberOfActionsAvailable() {
+        return numberOfActions;
     }
 }
