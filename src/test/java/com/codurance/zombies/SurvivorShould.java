@@ -47,4 +47,10 @@ public class SurvivorShould {
         int actions = survivor.getNumberOfActionsAvailable();
         assertThat(actions, is(3));
     }
+
+    @Test
+    public void validate_is_my_turn() {
+        boolean turn = survivor.isMyTurn();
+        assertThat(turn, is(true));
+    }
 }

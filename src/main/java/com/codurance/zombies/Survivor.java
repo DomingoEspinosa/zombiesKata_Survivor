@@ -2,6 +2,7 @@ package com.codurance.zombies;
 
 public class Survivor {
 
+    private boolean myTurn;
     private int numberOfActions;
     private int wounds;
     private String name;
@@ -9,6 +10,7 @@ public class Survivor {
     public Survivor() {
         wounds = 0;
         numberOfActions = 3;
+        myTurn = true;
     }
 
     public String getName() {
@@ -36,5 +38,9 @@ public class Survivor {
 
     public int getNumberOfActionsAvailable() {
         return numberOfActions;
+    }
+
+    public boolean isMyTurn() {
+        return myTurn;
     }
 }
