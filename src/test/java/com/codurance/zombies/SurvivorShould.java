@@ -19,4 +19,12 @@ public class SurvivorShould {
         final Survivor survivor = new Survivor("");
         Assertions.assertThrows(RuntimeException.class, () -> survivor.getName());
     }
+
+    @Test
+    public void not_have_initial_wounds() {
+
+        Survivor survivor = new Survivor("Pepe");
+        int wounds = survivor.getWounds();
+        assertThat(wounds, is(0));
+    }
 }
