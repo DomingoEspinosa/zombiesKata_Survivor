@@ -5,13 +5,12 @@ public class Survivor {
     private int wounds;
     private String name;
 
-    public Survivor(String name) {
-        this.name = name;
+    public Survivor() {
         wounds = 0;
     }
 
     public String getName() {
-        if(name.equals("")){
+        if (name.equals("")) {
             throw new RuntimeException();
         }
         return name;
@@ -19,5 +18,17 @@ public class Survivor {
 
     public int getWounds() {
         return wounds;
+    }
+
+    public boolean isAlive() {
+        return wounds < 2;
+    }
+
+    public void increaseWounds(int wound) {
+        this.wounds += wound;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
