@@ -9,6 +9,9 @@ public class Survivor {
     }
 
     public String getName() {
+        if(name.equals("")){
+            throw new RuntimeException();
+        }
         return name;
     }
 }

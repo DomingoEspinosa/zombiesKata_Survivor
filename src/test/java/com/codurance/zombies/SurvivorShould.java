@@ -1,5 +1,6 @@
 package com.codurance.zombies;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,5 +12,11 @@ public class SurvivorShould {
         Survivor survivor = new Survivor("Pepe");
         String name = survivor.getName();
         assertThat(name, is("Pepe"));
+    }
+
+    @Test
+    public void has_not_name() {
+        final Survivor survivor = new Survivor("");
+        Assertions.assertThrows(RuntimeException.class, () -> survivor.getName());
     }
 }
