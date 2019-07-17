@@ -1,11 +1,16 @@
 package com.codurance.zombies;
 
+import com.codurance.zombies.equipment.Equipment;
+
+import java.util.ArrayList;
+
 public class Survivor {
 
     private boolean myTurn;
     private int numberOfActions;
     private int wounds;
     private String name;
+    private ArrayList<Equipment> equipments;
 
     public Survivor() {
         wounds = 0;
@@ -42,5 +47,13 @@ public class Survivor {
 
     public boolean isMyTurn() {
         return myTurn;
+    }
+
+    public int getActualCapacityOfEquipment() {
+        return equipments.size();
+    }
+
+    public void setEquipment(ArrayList<Equipment> equipmentList) {
+        this.equipments = equipmentList;
     }
 }
