@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Survivor {
 
+    public static final int MAXIMUM_CAPACITY = 5;
     private boolean myTurn;
     private int numberOfActions;
     private int wounds;
@@ -55,7 +56,7 @@ public class Survivor {
     }
 
     public void setEquipment(ArrayList<Equipment> equipmentList) {
-        if (equipmentList.size() > 5){
+        if (equipmentList.size() > MAXIMUM_CAPACITY){
             throw new RuntimeException();
         }
         this.equipments = equipmentList;
