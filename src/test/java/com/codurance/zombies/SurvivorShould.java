@@ -70,17 +70,17 @@ public class SurvivorShould {
     }
 
     @Test
-    public void have_a_capacity_of_5_of_equipment() {
+    public void have_a_capacity_of_5_maximum_of_equipment() {
         equipmentList.add(baseballbat);
         equipmentList.add(fryingPan);
         equipmentList.add(katana);
         equipmentList.add(pistol);
         equipmentList.add(bottledWater);
+        equipmentList.add(pistol);
 
         Survivor survivor = new Survivor();
         survivor.setName(PEPE);
-        survivor.setEquipment(equipmentList);
 
-        assertThat(survivor.getActualCapacityOfEquipment(), is(5));
+        Assertions.assertThrows(RuntimeException.class, ()->survivor.setEquipment(equipmentList));
     }
 }

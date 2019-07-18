@@ -12,6 +12,7 @@ public class Survivor {
     private String name;
     private ArrayList<Equipment> equipments;
 
+
     public Survivor() {
         wounds = 0;
         numberOfActions = 3;
@@ -54,6 +55,9 @@ public class Survivor {
     }
 
     public void setEquipment(ArrayList<Equipment> equipmentList) {
+        if (equipmentList.size() > 5){
+            throw new RuntimeException();
+        }
         this.equipments = equipmentList;
     }
 }
