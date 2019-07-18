@@ -6,12 +6,16 @@ import java.util.ArrayList;
 
 public class Survivor {
 
-    public static final int MAXIMUM_CAPACITY = 5;
+    private static final int MAXIMUM_CAPACITY = 5;
+    private static final int MAXIMUM_IN_RESERVE = 3;
+    private static final int MAXIMUM_IN_HAND = 2;
     private boolean myTurn;
     private int numberOfActions;
     private int wounds;
     private String name;
     private ArrayList<Equipment> equipments;
+    private ArrayList<Equipment> equipmentInHand;
+    private ArrayList<Equipment> equipmentInReserve;
 
 
     public Survivor() {
@@ -60,5 +64,19 @@ public class Survivor {
             throw new RuntimeException();
         }
         this.equipments = equipmentList;
+    }
+
+    public void setInHand(ArrayList<Equipment> equipmentList) {
+        if (equipmentList.size() > MAXIMUM_IN_HAND){
+            throw new RuntimeException();
+        }
+        equipmentInHand = equipmentList;
+    }
+
+    public void setInReserve(ArrayList<Equipment> equipmentList) {
+        if (equipmentList.size() > MAXIMUM_IN_RESERVE){
+            throw new RuntimeException();
+        }
+        equipmentInReserve = equipmentList;
     }
 }

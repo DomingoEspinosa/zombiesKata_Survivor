@@ -1,7 +1,6 @@
 package com.codurance.zombies;
 
 import com.codurance.zombies.equipment.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SurvivorShould {
 
@@ -41,7 +41,7 @@ public class SurvivorShould {
     @Test
     public void has_not_name() {
         survivor.setName("");
-        Assertions.assertThrows(RuntimeException.class, () -> survivor.getName());
+        assertThrows(RuntimeException.class, () -> survivor.getName());
     }
 
     @Test
@@ -81,6 +81,25 @@ public class SurvivorShould {
         Survivor survivor = new Survivor();
         survivor.setName(PEPE);
 
-        Assertions.assertThrows(RuntimeException.class, ()->survivor.setEquipment(equipmentList));
+        assertThrows(RuntimeException.class, ()->survivor.setEquipment(equipmentList));
+    }
+
+    @Test
+    public void have_a_capacity_of_2_in_hand_and_3_in_reserve() {
+        equipmentList.add(baseballbat);
+        equipmentList.add(fryingPan);
+        equipmentList.add(katana);
+
+        survivor.setName(PEPE);
+
+        assertThrows(RuntimeException.class, ()-> survivor.setInHand(equipmentList));
+
+        equipmentList = new ArrayList<>();
+        equipmentList.add(baseballbat);
+        equipmentList.add(fryingPan);
+        equipmentList.add(katana);
+        equipmentList.add(pistol);
+
+        assertThrows(RuntimeException.class, ()-> survivor.setInReserve(equipmentList));
     }
 }
