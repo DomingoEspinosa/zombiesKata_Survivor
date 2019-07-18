@@ -85,13 +85,10 @@ public class SurvivorShould {
     }
 
     @Test
-    public void have_a_capacity_of_2_in_hand_and_3_in_reserve() {
-        survivor.setInHand(baseballbat);
-        survivor.setInHand(fryingPan);
-
+    public void have_a_max_capacity_of_2_in_hand_and_rest_in_reserve() {
         survivor.setName(PEPE);
 
-        assertThrows(RuntimeException.class, () -> survivor.setInHand(katana));
+        survivor.setInHand(baseballbat);
 
         survivor.setInReserve(baseballbat);
         survivor.setInReserve(fryingPan);
@@ -99,4 +96,6 @@ public class SurvivorShould {
 
         assertThrows(RuntimeException.class, () -> survivor.setInReserve(pistol));
     }
+
+
 }

@@ -79,9 +79,19 @@ public class Survivor {
     }
 
     public void setInReserve(Equipment equipment) {
-        if (equipmentInReserve.size() >= MAXIMUM_IN_RESERVE) {
+        int total = getActualCapacityInReserve() + getActualCapacityInHand();
+        if (total < MAXIMUM_CAPACITY){
+            equipmentInReserve.add(equipment);
+        } else {
             throw new RuntimeException();
         }
-        equipmentInReserve.add(equipment);
+    }
+
+    public int getActualCapacityInHand() {
+        return equipmentInHand.size();
+    }
+
+    public int getActualCapacityInReserve() {
+        return equipmentInReserve.size();
     }
 }
