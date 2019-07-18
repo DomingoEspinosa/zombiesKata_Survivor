@@ -13,7 +13,6 @@ public class Survivor {
     private int numberOfActions;
     private int wounds;
     private String name;
-    private ArrayList<Equipment> equipments;
     private ArrayList<Equipment> equipmentInHand;
     private ArrayList<Equipment> equipmentInReserve;
 
@@ -22,6 +21,8 @@ public class Survivor {
         wounds = 0;
         numberOfActions = 3;
         myTurn = true;
+        equipmentInHand = new ArrayList<>();
+        equipmentInReserve = new ArrayList<>();
     }
 
     public String getName() {
@@ -55,28 +56,32 @@ public class Survivor {
         return myTurn;
     }
 
-    public int getActualCapacityOfEquipment() {
-        return equipments.size();
-    }
 
     public void setEquipment(ArrayList<Equipment> equipmentList) {
-        if (equipmentList.size() > MAXIMUM_CAPACITY){
+        if (equipmentList.size() > MAXIMUM_CAPACITY) {
             throw new RuntimeException();
         }
-        this.equipments = equipmentList;
+        for (Equipment equipment : equipmentList) {
+            if (equipmentInHand.size() < MAXIMUM_IN_HAND) {
+                setInHand(equipment);
+            }
+            if (equipmentInReserve.size() < MAXIMUM_IN_RESERVE) {
+                setInReserve(equipment);
+            }
+        }
     }
 
-    public void setInHand(ArrayList<Equipment> equipmentList) {
-        if (equipmentList.size() > MAXIMUM_IN_HAND){
+    public void setInHand(Equipment equipment) {
+        if (equipmentInHand.size() >= MAXIMUM_IN_HAND) {
             throw new RuntimeException();
         }
-        equipmentInHand = equipmentList;
+        equipmentInHand.add(equipment);
     }
 
-    public void setInReserve(ArrayList<Equipment> equipmentList) {
-        if (equipmentList.size() > MAXIMUM_IN_RESERVE){
+    public void setInReserve(Equipment equipment) {
+        if (equipmentInReserve.size() >= MAXIMUM_IN_RESERVE) {
             throw new RuntimeException();
         }
-        equipmentInReserve = equipmentList;
+        equipmentInReserve.add(equipment);
     }
 }

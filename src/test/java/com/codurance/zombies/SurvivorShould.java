@@ -81,25 +81,22 @@ public class SurvivorShould {
         Survivor survivor = new Survivor();
         survivor.setName(PEPE);
 
-        assertThrows(RuntimeException.class, ()->survivor.setEquipment(equipmentList));
+        assertThrows(RuntimeException.class, () -> survivor.setEquipment(equipmentList));
     }
 
     @Test
     public void have_a_capacity_of_2_in_hand_and_3_in_reserve() {
-        equipmentList.add(baseballbat);
-        equipmentList.add(fryingPan);
-        equipmentList.add(katana);
+        survivor.setInHand(baseballbat);
+        survivor.setInHand(fryingPan);
 
         survivor.setName(PEPE);
 
-        assertThrows(RuntimeException.class, ()-> survivor.setInHand(equipmentList));
+        assertThrows(RuntimeException.class, () -> survivor.setInHand(katana));
 
-        equipmentList = new ArrayList<>();
-        equipmentList.add(baseballbat);
-        equipmentList.add(fryingPan);
-        equipmentList.add(katana);
-        equipmentList.add(pistol);
+        survivor.setInReserve(baseballbat);
+        survivor.setInReserve(fryingPan);
+        survivor.setInReserve(katana);
 
-        assertThrows(RuntimeException.class, ()-> survivor.setInReserve(equipmentList));
+        assertThrows(RuntimeException.class, () -> survivor.setInReserve(pistol));
     }
 }
